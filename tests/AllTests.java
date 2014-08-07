@@ -6,6 +6,7 @@ import tests.chess.GameTest;
 import tests.pieces.KingTest;
 import tests.pieces.PieceTest;
 import tests.pieces.QueenTest;
+import tests.pieces.PawnTest;
 
 public class AllTests {
 
@@ -16,6 +17,7 @@ public class AllTests {
         suite.addTestSuite(BoardTest.class);
         suite.addTestSuite(KingTest.class);
         suite.addTestSuite(QueenTest.class);
+        suite.addTestSuite(PawnTest.class);
         return suite;
     }
 

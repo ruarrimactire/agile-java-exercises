@@ -102,11 +102,36 @@ public class Board {
         return (row>=0 && row<8 && column>=0 && column<8);
     }
 
-    public String getMoveDirection(String from, int x, int y)
-    {
+    public boolean isStraightDirection(String from, int x, int y) {
         int row = getRowFromPosition(from)-y;
         int column = getColumnFromPosition(from)+x;
-        return positionToString(column, row);
+        if(row==0 || column==0 || row==column || row==-column)
+            return true;
+        else 
+            return false;
+    }
+    
+    public boolean isFreeStraightDirection(String from, int x, int y) {
+        if( isStraightDirection(from, x, y) ){
+            int pos_y = getRowFromPosition(from)-y;
+            int pos_x = getColumnFromPosition(from)+x;
+            // TODO
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    public String getMoveDirection(String from, int x, int y)
+    {
+//        if(isValidDirection(from, x, y)){
+            int row = getRowFromPosition(from)-y;
+            int column = getColumnFromPosition(from)+x;
+            return positionToString(column, row);
+//        }
+//        else {
+//            return "";
+//        }
     }
 
     public String findPiece(Piece piece)
