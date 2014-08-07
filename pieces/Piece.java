@@ -23,6 +23,20 @@ public class Piece implements Comparable<Piece> {
         return new Piece(Colour.EMPTY);
     }
 
+    protected void continueDirection(
+            ArrayList<String> moves,
+            String from,
+            int x,
+            int y,
+            Board board
+            ) {
+        if (board.isValidDirection(from, x, y)) {
+            String to = board.getMoveDirection(from, x, y);
+            moves.add(to);
+            continueDirection(moves, to, x, y, board);
+        }
+    }
+
     public static Piece createWhitePawn()
     {
         return new Pawn(Colour.WHITE);

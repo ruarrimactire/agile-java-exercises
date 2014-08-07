@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 import chess.Board;
 
-public class Queen extends Piece {
+public class Rook extends Piece {
 
-    public Queen(Colour colour) {
+    public Rook(Colour colour) {
         super(colour);
     }
 
     public String getName()
     {
-        return "q";
+        return "r";
     }
 
     public double getBaseStrength()
     {
-        return 9.0;
+        return 7.0;
     }
 
     public ArrayList<String> getPossibleMoves(Board board)
@@ -27,7 +27,7 @@ public class Queen extends Piece {
 
         for (int x=-1; x<=1; x++) {
             for (int y=-1; y<=1; y++) {
-                if (x!=0 || y!=0) {
+                if ( !(x==0 && y==0) && !(Integer.compareUnsigned(x, y)==0) ) {
                     continueDirection(moves, from, x, y, board);
                 }
             }
