@@ -23,6 +23,14 @@ public class Piece implements Comparable<Piece> {
         return new Piece(Colour.EMPTY);
     }
 
+    /**
+     * recursive function
+     * @param moves
+     * @param from
+     * @param x
+     * @param y
+     * @param board 
+     */
     protected void continueDirection(
             ArrayList<String> moves,
             String from,
@@ -31,15 +39,14 @@ public class Piece implements Comparable<Piece> {
             Board board
             ) {
         if ( board.isValidDirection(from, x, y) ) {
-            if ( board.getPosition(board.getMoveDirection(from, x, y)).isEmpty() ) {
-                String to = board.getMoveDirection(from, x, y);
-                moves.add(to);
-                continueDirection(moves, to, x, y, board);
+            Piece piece = board.getPosition(board.getMoveDirection(from, x, y));
+            if ( piece.isEmpty() ) {
+                moves.add(board.getMoveDirection(from, x, y));
+                continueDirection(moves, moves.get(moves.size()-1), x, y, board);
             }
-            else if( (this.isBlack() && board.getPosition(board.getMoveDirection(from, x, y)).isWhite()) || 
-                     (this.isWhite() && board.getPosition(board.getMoveDirection(from, x, y)).isBlack())  ){
-                String to = board.getMoveDirection(from, x, y);
-                moves.add(to);
+            else if( (this.isBlack() && piece.isWhite()) || 
+                     (this.isWhite() && piece.isBlack())  ){
+                moves.add(board.getMoveDirection(from, x, y));
                 return;
             }
         }

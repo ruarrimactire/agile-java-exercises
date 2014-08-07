@@ -24,12 +24,12 @@ public class PawnTest extends TestCase {
     public void testGetAvailableMovesPawn()
     {
         Board board = new Board();
-        Pawn pawn = new Pawn(Colour.WHITE);
+        Pawn pawn = new Pawn(Colour.BLACK);
         board.setPosition("d5", pawn);
         board.setPosition("c6", new Bishop(Colour.BLACK));
         board.setPosition("e6", new Bishop(Colour.WHITE));
         board.setPosition("h6", new Rook(Colour.WHITE));
-        board.setPosition("d7", new Bishop(Colour.WHITE)); 
+        board.setPosition("d8", new Bishop(Colour.WHITE)); 
         ArrayList<String> moves = pawn.getPossibleMoves(board);
         
 //        System.out.println(board.toString());
@@ -39,19 +39,19 @@ public class PawnTest extends TestCase {
 //            i++;
 //        }}
 
-        assertEquals(2, moves.size());
+        assertEquals(3, moves.size());
         assertFalse(moves.contains("d5"));
         assertFalse(moves.contains("c5"));
-        assertTrue(moves.contains("d4"));
-        assertTrue(moves.contains("d3"));
+        assertFalse(moves.contains("d4"));
+        assertFalse(moves.contains("d3"));
 
         assertFalse(moves.contains("c4"));
         assertFalse(moves.contains("e4"));
         assertFalse(moves.contains("c5"));
         assertFalse(moves.contains("e5"));
         assertFalse(moves.contains("c6"));
-        assertFalse(moves.contains("d6"));
-        assertFalse(moves.contains("e6"));
+        assertTrue(moves.contains("d6"));
+        assertTrue(moves.contains("e6"));
     }
 
     public void testGetAvailableMovesPawnCorner()

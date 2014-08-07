@@ -35,6 +35,8 @@ public class QueenTest extends TestCase {
         assertFalse(moves.contains("a1"));
         assertTrue(moves.contains("h1"));
         assertTrue(moves.contains("a5"));
+        assertFalse(moves.contains("a6"));
+        assertFalse(moves.contains("a7"));
         assertFalse(moves.contains("a8"));
         assertTrue(moves.contains("b2"));
         assertTrue(moves.contains("h8"));
