@@ -25,32 +25,18 @@ public class Knight extends Piece {
         String from = board.findPiece(this);
         ArrayList<String> moves = new ArrayList<String>();
 
-        { int x = -1; int y =  3; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
-        }
-        { int x =  1; int y =  3; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
-        }
-        { int x = -1; int y = -3; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
-        }
-        { int x =  1; int y = -3; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
+        for(int x=-1; x<=1; x+=2){
+            for(int y=-3; y<=3; y+=6){
+                if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
+            }
         }
 
-        { int x = -3; int y =  1; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
+        for(int y=-1; y<=1; y+=2){
+            for(int x=-3; x<=3; x+=6){
+                if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
+            }
         }
-        { int x = -3; int y = -1; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
-        }
-        { int x =  3; int y =  1; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
-        }
-        { int x =  3; int y = -1; 
-            if ( board.isValidDirection(from, x, y) ) moves.add(board.getMoveDirection(from, x, y));
-        }
-
+        
         return moves;
     }
 }
