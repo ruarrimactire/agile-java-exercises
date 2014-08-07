@@ -56,11 +56,51 @@ public class BoardTest extends TestCase {
 
     public void testIsValidDirection()
     {
-        assertTrue(board.isValidDirection("a1", 1, 1));
-        assertFalse(board.isValidDirection("a1", -1, 0));
-        assertFalse(board.isValidDirection("a1", -1, -1));
-        assertFalse(board.isValidDirection("h8", 0, 1));
-        assertFalse(board.isValidDirection("h8", 1, 0));
+//        assertTrue(board.isValidDirection("a1", 1, 1));
+//        assertTrue(board.isValidDirection("a1", 0, 1));
+//        assertTrue(board.isValidDirection("a1", 1, 0));
+//        assertTrue(board.isValidDirection("a1", 0, 0));
+//        assertFalse(board.isValidDirection("a1", -1, 0));
+//        assertFalse(board.isValidDirection("a1", 0, -1));
+//        assertFalse(board.isValidDirection("a1", -1, -1));
+//        assertFalse(board.isValidDirection("a1", 1, -1));
+//        assertFalse(board.isValidDirection("a1", -1, 1));
+        for(int x=-1; x<=1; x++){
+            for(int y=-1; y<=1; y++){
+                if (x==-1 || y==-1)
+                    assertFalse(board.isValidDirection("a1", x, y));
+                else if ( (x==1 || y==1) || (x==0 && y==0) )
+                    assertTrue(board.isValidDirection("a1", x, y));
+            }
+        }
+
+        for(int x=-1; x<=1; x++){
+            for(int y=-1; y<=1; y++){
+                if (x==1 || y==1)
+                    assertFalse(board.isValidDirection("h8", x, y));
+                else 
+                    assertTrue(board.isValidDirection("h8", x, y));
+            }
+        }
+
+        for(int x=-1; x<=1; x++){
+            for(int y=-1; y<=1; y++){
+                if (x==-1 || y==1)
+                    assertFalse(board.isValidDirection("a8", x, y));
+                else 
+                    assertTrue(board.isValidDirection("a8", x, y));
+            }
+        }
+        
+        for(int x=-1; x<=1; x++){
+            for(int y=-1; y<=1; y++){
+                if (x==1 || y==-1)
+                    assertFalse(board.isValidDirection("h1", x, y));
+                else 
+                    assertTrue(board.isValidDirection("h1", x, y));
+            }
+        }
+        
     }
 
     public void testGetMoveDirection()
