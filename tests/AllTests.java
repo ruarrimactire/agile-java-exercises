@@ -23,20 +23,12 @@ public class AllTests {
         TestResult nuovo = new TestResult();
         suite().run(nuovo);
         
-            System.out.println("Errors: \t" + nuovo.errorCount() );
-            {   int i = 1;
-                while(nuovo.errors().hasMoreElements()){
-                    System.out.println(i + ".\t\t" + nuovo.errors().nextElement().toString() );
-                    i++;
-                }
-            }
-            System.out.println("Failures:\t" + nuovo.failureCount() );
-            {   int i = 1;
-                while(nuovo.failures().hasMoreElements()){
-                    System.out.println(i + ".\t\t" + nuovo.failures().nextElement().toString() );
-                    i++;
-                }
-            }
+        System.out.println("Errors: \t" + nuovo.errorCount() );
+        if(nuovo.errors().hasMoreElements())
+            System.out.println(nuovo.errors().nextElement().toString() );
+        System.out.println("Failures:\t" + nuovo.failureCount() );
+        if(nuovo.failures().hasMoreElements())
+            System.out.println(nuovo.failures().nextElement().toString() );
     }
 
 }

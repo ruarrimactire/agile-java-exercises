@@ -30,10 +30,18 @@ public class Piece implements Comparable<Piece> {
             int y,
             Board board
             ) {
-        if (board.isValidDirection(from, x, y)) {
-            String to = board.getMoveDirection(from, x, y);
-            moves.add(to);
-            continueDirection(moves, to, x, y, board);
+        if ( board.isValidDirection(from, x, y) ) {
+            if ( board.getPosition(board.getMoveDirection(from, x, y)).isEmpty() ) {
+                String to = board.getMoveDirection(from, x, y);
+                moves.add(to);
+                continueDirection(moves, to, x, y, board);
+            }
+            else if( (this.isBlack() && board.getPosition(board.getMoveDirection(from, x, y)).isWhite()) || 
+                     (this.isWhite() && board.getPosition(board.getMoveDirection(from, x, y)).isBlack())  ){
+                String to = board.getMoveDirection(from, x, y);
+                moves.add(to);
+                return;
+            }
         }
     }
 
@@ -85,6 +93,10 @@ public class Piece implements Comparable<Piece> {
     public static Piece createBlackKnight()
     {
         return new Knight(Colour.BLACK);
+    }
+
+    public boolean isEmpty() {
+        return colour == Colour.EMPTY;
     }
 
     public boolean isWhite() {
