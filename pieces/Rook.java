@@ -17,7 +17,7 @@ public class Rook extends Piece {
 
     public double getBaseStrength()
     {
-        return 7.0;
+        return 5.0;
     }
 
     public ArrayList<String> getPossibleMoves(Board board)

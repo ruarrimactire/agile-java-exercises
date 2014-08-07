@@ -12,12 +12,12 @@ public class Knight extends Piece {
 
     public String getName()
     {
-        return "kn";
+        return "n";
     }
 
     public double getBaseStrength()
     {
-        return 6.0;
+        return 2.5;
     }
 
     public ArrayList<String> getPossibleMoves(Board board)

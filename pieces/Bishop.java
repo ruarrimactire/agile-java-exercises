@@ -17,7 +17,7 @@ public class Bishop extends Piece {
 
     public double getBaseStrength()
     {
-        return 8.0;
+        return 3.0;
     }
 
     public ArrayList<String> getPossibleMoves(Board board)

@@ -17,7 +17,7 @@ public class Pawn extends Piece {
 
     public double getBaseStrength()
     {
-        return 1.0;
+        return 0.5;
     }
 
 
